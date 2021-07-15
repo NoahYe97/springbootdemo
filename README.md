@@ -6,11 +6,11 @@
 
 - **已集成**  
 - [x] mybatis   
-- [x] thymeleaf(未知原因无法获取页面，可能为maven加载问题)  
-  > updated 2019.10.24  
-  > 导入他人成功项目案例后maven重新解决依赖，已成功 
+- [x] thymeleaf
+- [x] swagger
 
 ### Updates
 - 2020-05-15 更新全局统一返回类及全局异常处理类
+- 2021-07-15 1.添加swagger依赖及配置  2.添加日志配置文件logback-spring
 
 [Top](#springbootdemo)

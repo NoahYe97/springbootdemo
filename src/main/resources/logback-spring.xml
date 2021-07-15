@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 定义日志的根目录 -->
+    <property name="LOG_HOME" value="app/log" />
+    <property name="PROJECT_NAME" value="springbootdemo" />
+
+    <!-- 导入springboot默认配置 -->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <!--
+       日志输出格式：
+           %d表示日期时间，
+           %thread表示线程名，
+           %-5level：级别从左显示5个字符宽度
+           %logger{50} 表示logger名字最长50个字符，否则按照句点分割。
+           %msg：日志消息，
+           %n是换行符
+       -->
+
+    <!-- 滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 指定日志文件的名称 -->
+        <!--<file>${LOG_HOME}/${PROJECT_NAME}.log</file>-->
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>${FILE_LOG_CHARSET}</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--
+                       滚动时产生的文件的存放位置及文件名称 %d{yyyy-MM-dd}：按天进行日志滚动
+                       %i：当文件大小超过maxFileSize时，按照i进行文件滚动
+                       -->
+            <fileNamePattern>${LOG_HOME}/%d{yyyy-MM-dd}/${PROJECT_NAME}-%i.log</fileNamePattern>
+            <!-- each file should be at most 100MB, keep 30 days worth of history, but at most 10GB -->
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+
+            <!-- 来指定日志文件的上限大小，例如设置为10GB的话，那么到了这个值，就会删除旧的日志 -->
+            <totalSizeCap>10GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <springProfile name="dev">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">
+        <root level="ERROR">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="FILE"/>
+        </root>
+    </springProfile>
+</configuration>
