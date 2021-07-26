@@ -23,7 +23,7 @@ spring:
         await-termination-period: 60 # 等待任务完成的最大时长，单位为秒。默认为 0 ，根据自己应用来设置
 
 mybatis:
-  mapper-locations: classpath:/mybatis/**/*Mapper.xml
-  type-aliases-package: com.noah.**.domain
+  mapper-locations: classpath:mybatis/**/*Mapper.xml
+  type-aliases-package: com.noahye.**.bean
   configuration:
     map-underscore-to-camel-case: true

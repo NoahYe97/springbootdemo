@@ -10,7 +10,10 @@
 - [x] swagger
 
 ### Updates
-- 2020-05-15 更新全局统一返回类及全局异常处理类
-- 2021-07-15 1.添加swagger依赖及配置  2.添加日志配置文件logback-spring
+- 2020-05-15  
+  > 更新全局统一返回类及全局异常处理类
+- 2021-07-15  
+  > 1.添加swagger依赖及配置  
+  > 2.添加日志配置文件logback-spring
 
 [Top](#springbootdemo)

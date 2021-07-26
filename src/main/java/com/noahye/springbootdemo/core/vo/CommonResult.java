@@ -51,11 +51,18 @@ public class CommonResult<T> implements Serializable {
         return commonResult;
     }
 
+    public static <T> CommonResult<T> success() {
+        CommonResult<T> commonResult = new CommonResult<>();
+        commonResult.code = CODE_SUCCESS;
+        commonResult.message = "操作成功";
+        return commonResult;
+    }
+
     public static <T> CommonResult<T> success(T data) {
         CommonResult<T> commonResult = new CommonResult<>();
         commonResult.code = CODE_SUCCESS;
         commonResult.data = data;
-        commonResult.message = "";
+        commonResult.message = "操作成功";
         return commonResult;
     }
 
